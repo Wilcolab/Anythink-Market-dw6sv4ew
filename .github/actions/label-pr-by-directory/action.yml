@@ -1,0 +1,9 @@
+name: "Label PR by Directory"
+description: "Adds a label to PRs for each top-level directory touched"
+inputs:
+  github_token:
+    description: "GitHub Token"
+    required: true
+runs:
+  using: "node16"
+  main: "index.js"
