@@ -32,6 +32,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      
+      - name: Label PR by Directory
+        uses: ./.github/actions/label-pr-by-directory
+        if: github.event_name == 'pull_request'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # Linting step using ESLint
       - name: Lint code with ESLint
