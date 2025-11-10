@@ -33,11 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
-        
-    - name: Install dependencies
-      run: npm install
-      
-    - name: Run tests
-      run: npm test
+      # Linting step using ESLint
+      - name: Lint code with ESLint
+        run: npx eslint .
+        continue-on-error: false
+
+      # Jest test and coverage step
+      - name: Run tests and check test coverage
+        run: npm test -- --coverage --coverageThreshold.global.statements=80
+        continue-on-error: false
